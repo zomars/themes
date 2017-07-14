@@ -13,9 +13,12 @@
                 {{ config.get('general/sitename') -}}
             {% if record.title is not defined and config.get('general/payoff') %} | {{ config.get('general/payoff') }}{% endif -%}
         </title>
-        <link rel="stylesheet" href="{{ asset('css/foundation.css', 'theme') }}">
-        <link rel="stylesheet" href="{{ asset('css/theme.css', 'theme') }}">
-        <link href='https://fonts.googleapis.com/css?family=Noto+Sans:700,700italic' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ prefetch(asset('css/foundation.css', 'theme'), {'as': 'style'}) }}">
+        <link rel="stylesheet" href="{{ prefetch(asset('css/theme.css', 'theme'), {'as': 'style'}) }}">
+        {# DNS requests are very small in terms of bandwidth, but latency can be quite high, especially on mobile networks.
+         # By speculatively prefetching DNS results, latency can be reduced significantly at certain times, such as when
+         # the user clicks the link. In some cases, latency can be reduced by a second #}
+        <link rel='stylesheet' href="{{ dns_prefetch(prefetch('https://fonts.googleapis.com/css?family=Noto+Sans:700,700italic', {'as': 'style'})) }}">
         {% block headincludes %}
         {% endblock headincludes %}
     </head>

@@ -4,7 +4,7 @@
    content in 'record', or - as we do in this example - take a random one from the list
    in the /theme/foundation/theme.yml file. #}
 
-{% set headerimage = asset('images/' ~ random(theme.headerimage), 'theme') %}
+{% set headerimage = prefetch(asset('images/' ~ random(theme.headerimage), 'theme'), {'as': 'image'}) %}
 
 {# the values in the 'config' object are taken directly from the file app/config/config.yml #}
 <div class="large-12 columns headertitle">

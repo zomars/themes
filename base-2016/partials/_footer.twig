@@ -17,6 +17,6 @@
 
 </footer>
 
-<script src="{{ asset('js/jquery.min.js', 'theme') }}"></script>
-<script src="{{ asset('js/foundation.js', 'theme') }}"></script>
-<script src="{{ asset('js/app.js', 'theme') }}"></script>
+<script src="{{ prefetch(asset('js/jquery.min.js', 'theme'), {'as': 'script'}) }}"></script>
+<script src="{{ prefetch(asset('js/foundation.js', 'theme'), {'as': 'script'}) }}"></script>
+<script src="{{ prefetch(asset('js/app.js', 'theme'), {'as': 'script'}) }}"></script>
